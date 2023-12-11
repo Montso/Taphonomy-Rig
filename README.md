@@ -1,0 +1,1 @@
+This code to run on the Taphonomy rig. It includes code for the [Pi HAT project.](https://github.com/montso/Pi-HAT)

@@ -1,0 +1,2 @@
+0 * * * * /home/pi/scripts/connect.py
+0 */5 * * * mount -a
