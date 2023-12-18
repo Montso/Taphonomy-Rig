@@ -1,13 +1,15 @@
 from collections import namedtuple
-from enum import Enum
+from enum import IntEnum
 import spidev
 import sys
 import time
 
 
 class Power():
-    class ADC_PIN(Enum):
-        ADC0, ADC1, ADC2, ADC3, ADC4, ADC5, ADC6, ADC7 = range(0, 8)
+    class ADC_PIN(IntEnum):
+        ADC0, ADC1, ADC2, ADC3, ADC4, ADC5, ADC6, ADC7 = list(range(8))
+        def __int__(self):
+            self.value
     
     VIN = ADC_PIN.ADC0
     IN0 = ADC_PIN.ADC2 #General purpose pin for future use
@@ -32,22 +34,24 @@ class Power():
 
 
     def clear_buffer(self) -> None:
-        self.spi.xfer2(0)
+        self.spi.xfer2([0])
 
-    def read_adc(self, channel = 0) -> int:
+    def read_adc(self, channel) -> int:
+        channel = channel
         msg = [channel<<3, 0x00] 
-        returnchars = spi.xfer2(msg)
+        returnchars = self.spi.xfer2(msg)
 
-        returnchars = spi.xfer2(msg)
+        returnchars = self.spi.xfer2(msg)
         value = returnchars[0]*64 + returnchars[1]/4
         return value
     
-    def read_analog_value(self, channel=0) -> float:
+    def read_analog_value(self, channel) -> float:
         adc_val = self.read_adc(channel)
-        analog_val = Power.ANALOG_REF/adc_val/(1024 -1)
+        analog_val = Power.ANALOG_REF*adc_val/(1024 -1)
 
         return analog_val        
 
 if __name__ == "__main__":
-    # read_adc()
+    # power = Power()
+    # print(power.read_analog_value(power.REF_2V5))
     pass
