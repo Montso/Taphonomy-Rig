@@ -2,7 +2,7 @@ from collections import namedtuple
 from enum import IntEnum
 import spidev
 import sys
-import time
+from time import sleep
 
 
 class Power():
@@ -51,7 +51,27 @@ class Power():
 
         return analog_val        
 
+    def read_temp(self) -> float:
+        Voffs = 500e-3
+        Tc = 10e-3
+        Tinfl = 0
+        get_temp = lambda Vout: ((Vout - Voffs)/Tc) + Tinfl
+
+        temp_vout = self.read_analog_value(Power.SENSE_TEMP)
+        temp = get_temp(temp_vout)
+
+        return temp
+
 if __name__ == "__main__":
-    # power = Power()
-    # print(power.read_analog_value(power.REF_2V5))
-    pass
+    power = Power()
+    while(1):
+        try:
+            print(power.read_analog_value(power.SENSE_TEMP))
+            print(power.read_temp())
+        except KeyboardInterrupt:
+            print("Keyboard interrupt")
+            break
+        print()
+        sleep(0.5)
+    print("Exiting")
+    sys.exit()
