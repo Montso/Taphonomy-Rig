@@ -3,7 +3,12 @@ from enum import IntEnum
 import spidev
 import sys
 from time import sleep
+import yaml
 
+# with open('./config.yaml', 'r') as file:
+#     CONFIGS = yaml.safe_load(file)
+# FLOAT_DP = CONFIGS["float_precision"]
+FLOAT_DP = 3
 
 class Power():
     class ADC_PIN(IntEnum):
@@ -62,16 +67,24 @@ class Power():
 
         return temp
 
+    def read_vin(self) -> float:
+        sense = self.read_analog_value(Power.VIN)
+        return round(sense, FLOAT_DP)
+
+    def read_sense_batt(self) -> float:
+        sense = self.read_analog_value(Power.SENSE_BATT)
+        return round(sense, FLOAT_DP)
+    
+    def read_sense_3v3(self) -> float:
+        sense = self.read_analog_value(Power.SENSE_3V3)*2
+        return round(sense, FLOAT_DP)
+
+    def read_ref_2v5(self) -> float:
+        sense = self.read_analog_value(Power.REF_2V5)
+        return round(sense, FLOAT_DP)
+
+
 if __name__ == "__main__":
     power = Power()
-    while(1):
-        try:
-            print(power.read_analog_value(power.SENSE_TEMP))
-            print(power.read_temp())
-        except KeyboardInterrupt:
-            print("Keyboard interrupt")
-            break
-        print()
-        sleep(0.5)
-    print("Exiting")
+    print(power.read_ref_2v5())
     sys.exit()
