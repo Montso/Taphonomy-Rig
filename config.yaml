@@ -1,0 +1,20 @@
+---
+# Relays Configs
+Relay:
+  LIFT_PIN: 22
+  LOWER_PIN: 5
+  DELAY: 20
+
+
+# Scale Configs
+Scale:
+  CONFIGURED: -1 #1 when configured
+  RATIO: 0
+  OFFSET: 0
+  ODR_SET: 10
+
+# Power Monitoring Configs
+Power:
+  FLOAT_DP: 3
+  IN0: -1 # 1 if anything is connected
+...
