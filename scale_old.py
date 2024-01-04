@@ -31,7 +31,7 @@ def remove_outliers(input_data):
         input_data.remove(input_data[statistics.mode(index_max_matrix)])
     return input_data
 
-hx = HX711(5,6)
+hx = HX711(dout_pin=14, pd_sck_pin=15)
 hx.power_up()
 print("reset scale")
 hx.reset()
@@ -70,5 +70,6 @@ while(True):
     if(state_change):
         state_change=0
         if(on_scale):
-            os.system("echo \"led1\" >> comms.fifo")
+            # os.system("echo \"led1\" >> comms.fifo")
+            pass
     time.sleep(0.05)
