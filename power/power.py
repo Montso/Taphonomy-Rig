@@ -3,7 +3,6 @@ from enum import IntEnum
 import spidev
 import sys
 from time import sleep
-import yaml
 
 # with open('./config.yaml', 'r') as file:
 #     CONFIGS = yaml.safe_load(file)
