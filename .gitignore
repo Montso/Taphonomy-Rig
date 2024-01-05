@@ -1,4 +1,5 @@
-
+#Files
+MakeFile
 #Folders to ignore
 log/
 __pycache__/
