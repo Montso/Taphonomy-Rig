@@ -1,3 +1,4 @@
+
 from hx711 import HX711
 import numpy as np
 import statistics
@@ -37,13 +38,13 @@ class Scale(HX711):
                 ), key=row.__getitem__)
                 index_max_matrix.append(index_max)
                 length.append(row)
-            print(length)
-            # print("Erased a value" , index_max_matrix) 
+            # print(length)
+            print("Erased a value" , set(index_max_matrix)) 
             #will keep for logs
             input_data.remove(input_data[statistics.mode(index_max_matrix)])
         return input_data
             
-    def zero(self, readings=30):
+    def zero(self):
         scale_offset = self.offset                                                                   #default starting value
         ratio = 32000                                                                  # conversion to kg
         prev_reading = self.get_raw_data_mean(10)
@@ -57,6 +58,5 @@ class Scale(HX711):
                 scale_offset = scale_offset*convergence_rate + (1-convergence_rate)*prev_reading
                 cnt = cnt + 1
                 print("%i: %d" % (cnt,scale_offset))
-        
-        result = self.get_raw_data(readings)
+    
         self.offset = scale_offset
