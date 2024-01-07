@@ -1,5 +1,5 @@
 import os
-# from relay import Relay
+from relay import Relay
 from scale import Scale
 import statistics
 import time
