@@ -1,5 +1,8 @@
 #Files
 MakeFile
+#only upload the default config file
+config.yaml
+
 #Folders to ignore
 log/
 __pycache__/
