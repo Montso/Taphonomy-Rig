@@ -25,7 +25,7 @@ class Scale(HX711):
 
         return data
     
-    def get_raw_data_mean(self, readings):
+    def get_raw_data_mean(self, readings=5):
         """
         Return a mean of the load cell raw data
         """
