@@ -29,39 +29,35 @@ class Relay():
         self.led2_state = default_state
 
     def set_high(self, pin:int):
-        match pin:
-            case 1:
-                GPIO.output(self.pin1,Relay.HIGH)
-                self.led1_state = Relay.HIGH
-            case 2:
-                GPIO.output(self.pin2,Relay.HIGH)
-                self.led2_state = Relay.HIGH
+        if (pin == 1):
+            GPIO.output(self.pin1,Relay.HIGH)
+            self.led1_state = Relay.HIGH
+        elif (pin ==2):
+            GPIO.output(self.pin2,Relay.HIGH)
+            self.led2_state = Relay.HIGH
         
 
     def set_low(self, pin):
-        match pin:
-            case 1:
-                GPIO.output(self.pin1,Relay.LOW)
-                self.led1_state = Relay.LOW
-            case 2:
-                GPIO.output(self.pin2,Relay.LOW)
-                self.led2_state = Relay.LOW
+        if (pin == 1):
+            GPIO.output(self.pin1,Relay.LOW)
+            self.led1_state = Relay.LOW
+        elif (pin == 1):
+            GPIO.output(self.pin2,Relay.LOW)
+            self.led2_state = Relay.LOW
 
     def set_state(self, pin, state):
-        match state:
-            case Relay.HIGH:
-                self.set_high(pin)
-            case Relay.LOW:
-                self.set_low(pin)
+        if (state == Relay.HIGH):
+            self.set_high(pin)
+        elif (state == Relay.LOW):
+            self.set_low(pin)
 
     def get_state(self, pin):
-        match pin:
-            case 1: 
-                return self.led1_state
-            case 2:
-                return self.led2_state
-            case _:
-                return -1
+        if (pin == 1):
+            return self.led1_state
+        elif (pin == 2):
+            return self.led2_state
+        else:
+            return -1
 
     def toggle_state(self, pin):
         if pin != 1 or pin != 2:
