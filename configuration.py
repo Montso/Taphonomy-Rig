@@ -36,7 +36,7 @@ except ValueError:
             known_weight_grams)
 
 ratio = int(((reading - scale_offset)**2)**0.5 / value)  # calculate the ratio for channel A and gain 128
-os.system(f"sudo sed -i -E 's/RATIO:\sfalse/RATIO: {ratio}/' config.yaml")
+os.system(f"sudo sed -i -E 's/Ratio:\sfalse/Ratio: {ratio}/' config.yaml")
 print("Calibration done.\n")
 
 os.system("touch configured") # add configured flag
