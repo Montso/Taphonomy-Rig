@@ -9,15 +9,19 @@ Pig:
 
 # Relays Configs
 Relay:
-  LIFT_PIN: 22
-  LOWER_PIN: 5
-  DELAY: 20
+  Lift_pin: 22
+  Lower_pin: 5
+  Timing:
+    Lift_time: 0
+    Lower_time: 0
+    Pause: 0
+    Sway_delay: 0
 
 
 # Scale Configs
 Scale:
-  RATIO: false
-  OFFSET: false
+  Ratio: false
+  Offset: false
   ODR_SET: 10
   Default_readouts: 10
 
