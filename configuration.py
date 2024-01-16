@@ -7,7 +7,7 @@ import time
 
 print('==CONFIGURATION==\n')
 
-hx = Scale(dout_pin=14, pd_sck_pin=15)
+hx = Scale(dout_pin=16, pd_sck_pin=19)
 hx.power_up()
 print("")
 print("Reset scale")
@@ -18,7 +18,7 @@ input("Press ENTER to begin tare (offset) calculation.")
 scale_offset = hx.zero()
 scale_offset = int(scale_offset)
 print("COMPLETED")
-os.system(f"sudo sed -i -E 's/OFFSET:\sfalse/OFFSET: {scale_offset}/' config.yaml")
+os.system(f"sudo sed -i -E 's/Offset:\sfalse/Offset: {scale_offset}/' config.yaml")
 print("Offset stored in config.yaml\n")
 
 print("Weight calibration.")
