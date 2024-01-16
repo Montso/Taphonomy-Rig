@@ -7,7 +7,7 @@ import time
 
 print('==CONFIGURATION==\n')
 
-hx = Scale(dout_pin=16, pd_sck_pin=19)
+hx = Scale(dout_pin=15, pd_sck_pin=14)
 hx.power_up()
 print("")
 print("Reset scale")
@@ -41,3 +41,16 @@ print("Calibration done.\n")
 
 os.system("touch configured") # add configured flag
 print("==CONFIGURATION COMPLETE==")
+
+get_weight = lambda raw_data: (raw_data - scale_offset)/ratio
+exit_option = input("Continue to stream weight. Else enter 'q' to quit." )
+if (exit_option.lower() != 'q'):
+    print("Beginning to stream weight. Ctrl-C to terminate.")
+    while(1):
+        try:
+            raw_data = hx.get_raw_data_mean(5)
+            weight = get_weight(raw_data)
+            print("Weight: %.2f grams"%weight)
+            time.sleep(0.5)
+        except KeyboardInterrupt:
+            quit()
