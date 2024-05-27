@@ -13,6 +13,10 @@ import yaml
 
 # SETUP
 
+if not os.path.isfile("configured"):
+    print("Your ""configured"" file does not exists. Run system configuration")
+    exit()
+
 #Load config data
 conf_file = open("default_config.yaml", 'r')
 conf = yaml.safe_load(conf_file)
@@ -34,6 +38,12 @@ SCALE_READOUTS = conf["Scale"]["Default_readouts"]
 LOWER_PIN = conf["Relay"]["LOWER_PIN"]
 LIFT_PIN = conf["Relay"]["LIFT_PIN"]
 LIFT_DELAY = conf["Relay"]["DELAY"]
+
+#Timings
+DELAY_BEFORE_LIFT = conf["Timing"]["Before_lift"]
+LIFTING_TIME = conf["Timing"]["Lift_time"]
+LOWERING_TIME = conf["Timing"]["Lowering_time"]
+STATIONARY_PAUSE  = conf["Timing"]["Stationary_pause"]
 
 #Config variables//
 
@@ -103,8 +113,38 @@ for _ in range(5): #random number to be updated
     log()
     time.sleep(0.05)
 
+#Lift the rig
 #LIFT Procedure
-output = "performing a lift in %i seconds" % conf.peaceful_pause
+output = "performing a lift in %i seconds" % DELAY_BEFORE_LIFT
+log()
+time.sleep(DELAY_BEFORE_LIFT)
+platform.lift(LIFTING_TIME)
 
+#Halt at top
+output = "Halting at the top for %i seconds" % STATIONARY_PAUSE
+log()
+time.sleep(STATIONARY_PAUSE)
+
+for _ in range(5): #random number to be updated
+    val = get_weight()
+    output = f"{val:.3f}"
+    log()
+    time.sleep(0.05)
+
+
+#Lower the rig
+platform.lower(LOWERING_TIME)
+
+output = "The Rig should be on the ground"
+log()
+
+for _ in range(5): #random number to be updated
+    val = get_weight()
+    output = f"{val:.3f}"
+    log()
+    time.sleep(0.05)
+
+output = "File complete"
+log()
 
 GPIO.cleanup()
