@@ -1,6 +1,5 @@
 
 from hx711 import HX711
-import numpy as np
 import statistics
 
 class Scale(HX711):
@@ -36,9 +35,8 @@ class Scale(HX711):
         """
         Outlier detection using modal index of number with biggest square difference 
         """
-        elements = np.array(input_data)
-        mean = np.mean(elements)
-        sd = np.std(elements)
+        mean = statistics.mean(input_data)
+        sd = statistics.stdev(input_data)
         col = []
         index_max_matrix = []
         if(sd>0.5*mean):
@@ -65,7 +63,7 @@ class Scale(HX711):
         mse = lambda x, y:statistics.sqrt((x - y)**2)
         while (mse(scale_offset, prev_reading)>self.err):
             prev_prev = prev_reading
-            prev_reading = self.get_raw_data_mean(10)
+            prev_reading = statistics.mean(self.get_raw_data(10))
             if(mse(prev_prev, prev_reading)<0.1*self.ratio): #If the difference MSE between the 2 prev < appox 100g
                 scale_offset = scale_offset*self.convergence_rate + (1-self.convergence_rate)*prev_reading
                 cnt = cnt + 1

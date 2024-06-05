@@ -1,7 +1,6 @@
 from email.policy import default
 from hx711 import HX711
 import logging
-import numpy as np
 import os
 from examples.config import LOWER_PIN
 from relay import Lift
@@ -10,6 +9,7 @@ from scale import Scale  # import the class HX711
 import statistics
 import time
 import yaml
+import statistics
 
 # SETUP
 
@@ -18,7 +18,7 @@ if not os.path.isfile("configured"):
     exit()
 
 #Load config data
-conf_file = open("default_config.yaml", 'r')
+conf_file = open("config.yaml", 'r')
 conf = yaml.safe_load(conf_file)
 conf_file.close()
 
@@ -30,23 +30,23 @@ DEVICE_ID = conf["Device"]["ID"]
 AVERAGE_WEIGHT = conf["Pig"]["Avg_Weight"]
 LIFT_PIG_FLAG = conf["Pig"]["Lift_pig"]
 #Scale
-SCALE_OFFSET = conf["Scale"]["OFFSET"]
-CAL_FACTOR = conf["Scale"]["RATIO"]
+SCALE_OFFSET = conf["Scale"]["Offset"]
+CAL_FACTOR = conf["Scale"]["Ratio"]
 SCALE_READOUTS = conf["Scale"]["Default_readouts"]
 
 #Relay
-LOWER_PIN = conf["Relay"]["LOWER_PIN"]
-LIFT_PIN = conf["Relay"]["LIFT_PIN"]
-LIFT_DELAY = conf["Relay"]["DELAY"]
+LOWER_PIN = conf["Relay"]["Lift_pin"]
+LIFT_PIN = conf["Relay"]["Lower_pin"]
 
 #Timings
 DELAY_BEFORE_LIFT = conf["Timing"]["Before_lift"]
 LIFTING_TIME = conf["Timing"]["Lift_time"]
-LOWERING_TIME = conf["Timing"]["Lowering_time"]
+LOWERING_TIME = conf["Timing"]["Lower_time"]
 STATIONARY_PAUSE  = conf["Timing"]["Stationary_pause"]
 
 #Config variables//
 
+#Check to see if the log folder exists and make it if not
 
 #Logging stream
 logging.basicConfig(filename = "./log/file_{t}.log".format(t = time.strftime("%Y_%m_%d_%H_%M_%S", time.localtime())),level=logging.DEBUG, format="%(asctime)s:" + logging.BASIC_FORMAT)
@@ -71,7 +71,6 @@ output = "Using hardcoded calibration factor of %i and offset %i" %(CAL_FACTOR, 
 log()
 output = "The lifting flag is set to %r" %LIFT_PIG_FLAG
 log()
-time.sleep(2)
 
 output = "Piglift startup"
 log()
@@ -97,7 +96,7 @@ def get_weight(readings=SCALE_READOUTS):
     Calculates weight by (reading - offset)/calc_factor
     """
     global hx
-    raw_read = hx.get_raw_data_mean(SCALE_READOUTS)
+    raw_read = statistics.mean(hx.get_raw_data(SCALE_READOUTS))
     weight = round((((raw_read-SCALE_OFFSET)/CAL_FACTOR)**2)**0.5, 3)
     
     return weight
@@ -144,7 +143,7 @@ for _ in range(5): #random number to be updated
     log()
     time.sleep(0.05)
 
-output = "File complete"
+output = "File complete - Exitting"
 log()
 
 GPIO.cleanup()

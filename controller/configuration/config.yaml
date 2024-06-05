@@ -1,8 +1,0 @@
-version: 0.05
-port_by_name: FT232
-num_devices: 3
-bytes_received: 148
-sleep_period_seconds: 900
-verbose_messages: false
-data_directory: ""
-desiccation_filename: data.txt
