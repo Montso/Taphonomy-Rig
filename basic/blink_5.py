@@ -11,9 +11,12 @@ def setup():
 
 def blink():
     try:
+        print("Blinking LED, press ctrl+C to stop this program")
         while True:
+            print("ON")
             GPIO.output(LED_PIN, GPIO.HIGH)  # Turn on LED
             time.sleep(BLINK_DELAY)
+            print("OFF")
             GPIO.output(LED_PIN, GPIO.LOW)   # Turn off LED
             time.sleep(BLINK_DELAY)
     except KeyboardInterrupt:
