@@ -1,15 +1,12 @@
-from email.policy import default
 from hx711 import HX711
 import logging
 import os
-from examples.config import LOWER_PIN
 from relay import Lift
 import RPi.GPIO as GPIO  # import GPIO
 from scale import Scale  # import the class HX711
 import statistics
 import time
 import yaml
-import statistics
 
 # SETUP
 
