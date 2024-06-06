@@ -1,19 +1,21 @@
-#Pi HAT project
+# Pi HAT project
 
 This code is to run on the Taphonomy rig. It includes code for the [Pi HAT project.](https://github.com/montso/Pi-HAT)
 
 ## First time setup on the Pi is:
 
 `sudo apt-get update`
+
 `sudo apt-get install -y python3-pip`
+
 `sudo apt-get install -y git`
 
 `git clone https://github.com/Montso/Taphonomy-Rig.git`
 
 `sudo python3 -m pip install -r requirements.txt --break-system-packages`
 
-Then in Taphonomy-Rig/ you have 2 options:
-Testing or perform a lift:
+## Then in Taphonomy-Rig/ folder 
+you have 2 options; Testing or Lifting:
 
 ### Lifting:
 
