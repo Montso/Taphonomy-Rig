@@ -1,8 +1,8 @@
-#Pi HAT project#
+#Pi HAT project
 
 This code is to run on the Taphonomy rig. It includes code for the [Pi HAT project.](https://github.com/montso/Pi-HAT)
 
-##First time setup on the Pi is:##
+## First time setup on the Pi is:
 
 `sudo apt-get update`
 `sudo apt-get install -y python3-pip`
@@ -15,7 +15,7 @@ This code is to run on the Taphonomy rig. It includes code for the [Pi HAT proje
 Then in Taphonomy-Rig/ you have 2 options:
 Testing or perform a lift:
 
-###Lifting:###
+### Lifting:
 
 `python3 main.py`
 
@@ -33,6 +33,6 @@ Changing the values in config.yaml will change the operations of the device on e
 
 The files will be saved in Taphonomy-Rig/log/
 
-###Testing:###
+### Testing:
 If you want to test, there is a folder Taphonomy-Rig/basic/ which has blink scripts for the pins required for lifting and lowering.
 And some code to test the scale - to come.
