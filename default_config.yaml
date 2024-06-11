@@ -4,13 +4,13 @@ Device:
   ID: 1
 
 Pig:
-  Avg_Weight: 42
+  Min_Weight: 10
   Lift_pig: False
 
 # Relays Configs
 Relay:
-  Lift_pin: 22
-  Lower_pin: 5
+  Lift_pin: 5
+  Lower_pin: 22
 
 # Scale Configs
 Scale:
