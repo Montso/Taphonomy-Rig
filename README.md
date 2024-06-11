@@ -45,7 +45,7 @@ And some code to test the scale - to come.
 
 It is simpler to make a tar(zipped) file when performing a group copy over to your machine. That can be done with this instruction from the ~ folder.
 
-`tar -vcf myfile.tar ~/Taphonomy-Rig/log/*
+`tar -vcf myfile.tar ~/Taphonomy-Rig/log/*`
 
 Then from a seperate terminal on your PC (Assuming Windows) you can run the line:
 
@@ -53,4 +53,4 @@ scp [username]@[IP]:~/[filename] [filename on your pc]
 
 Example:
 
-`scp justin@192.168.137.79:~/myfile.tar yemi.tar
+`scp justin@192.168.137.79:~/myfile.tar yemi.tar`
