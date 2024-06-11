@@ -87,7 +87,7 @@ def get_weight(readings=SCALE_READOUTS):
     Calculates weight by (reading - offset)/calc_factor
     """
     global hx
-    raw_read = statistics.mean(hx.get_raw_data(SCALE_READOUTS))
+    raw_read = statistics.mean(hx.get_raw_data(readings))
     weight = round((((raw_read-SCALE_OFFSET)/CAL_FACTOR)**2)**0.5, 3)
     
     return weight
@@ -136,7 +136,7 @@ num_samples = 3
 while elapsed_time < timeout:
     if get_weight(num_samples) < MINIMUM_WEIGHT:
         break
-    elapsed_time += 0.2*num_samples
+    elapsed_time += 0.1*num_samples
     time.sleep(interval)
     elapsed_time += interval
 
