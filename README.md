@@ -10,6 +10,8 @@ This code is to run on the Taphonomy rig. It includes code for the [Pi HAT proje
 
 `sudo apt-get install -y git`
 
+`sudo timedatectl set-timezone Africa/Johannesburg
+
 `git clone https://github.com/Montso/Taphonomy-Rig.git`
 
 `sudo python3 -m pip install -r requirements.txt --break-system-packages`
@@ -38,3 +40,17 @@ The files will be saved in Taphonomy-Rig/log/
 ### Testing:
 If you want to test, there is a folder Taphonomy-Rig/basic/ which has blink scripts for the pins required for lifting and lowering.
 And some code to test the scale - to come.
+
+## Pulling the data
+
+It is simpler to make a tar(zipped) file when performing a group copy over to your machine. That can be done with this instruction from the ~ folder.
+
+`tar -vcf myfile.tar ~/Taphonomy-Rig/log/*
+
+Then from a seperate terminal on your PC (Assuming Windows) you can run the line:
+
+scp [username]@[IP]:~/[filename] [filename on your pc]
+
+Example:
+
+`scp justin@192.168.137.79:~/myfile.tar yemi.tar
