@@ -10,7 +10,7 @@ This code is to run on the Taphonomy rig. It includes code for the [Pi HAT proje
 
 `sudo apt-get install -y git`
 
-`sudo timedatectl set-timezone Africa/Johannesburg
+`sudo timedatectl set-timezone Africa/Johannesburg`
 
 `git clone https://github.com/Montso/Taphonomy-Rig.git`
 

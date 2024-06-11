@@ -1,7 +1,6 @@
 from hx711 import HX711
 import logging
 import os
-from relay import Lift
 import RPi.GPIO as GPIO  # import GPIO
 from scale import Scale  # import the class HX711
 import statistics
@@ -24,7 +23,7 @@ VERSION = conf["Device"]["Version"]
 DEVICE_ID = conf["Device"]["ID"]
 
 #Pig
-AVERAGE_WEIGHT = conf["Pig"]["Avg_Weight"]
+MINIMUM_WEIGHT = conf["Pig"]["Min_Weight"]
 LIFT_PIG_FLAG = conf["Pig"]["Lift_pig"]
 #Scale
 SCALE_OFFSET = conf["Scale"]["Offset"]
@@ -74,13 +73,8 @@ log()
 
 #Setup
 GPIO.setmode(GPIO.BCM)  # set GPIO pin mode to BCM numbering
-
-platform = Lift(
-    pin1=22,
-    pin2=5,
-    default_state=False,
-    lift_pin=LIFT_PIN,
-    lower_pin=LOWER_PIN) # Handles the wrench lifting/lowering
+GPIO.setup(LIFT_PIN, GPIO.OUT)  # Set GPIO pin as output
+GPIO.setup(LOWER_PIN, GPIO.OUT)  # Set GPIO pin as output
 
 hx = HX711(pd_sck_pin=19, dout_pin=16)
 hx.power_up()
@@ -114,7 +108,9 @@ for _ in range(5): #random number to be updated
 output = "performing a lift in %i seconds" % DELAY_BEFORE_LIFT
 log()
 time.sleep(DELAY_BEFORE_LIFT)
-platform.lift(LIFTING_TIME)
+GPIO.output(LIFT_PIN, GPIO.HIGH)  # Turn on LED
+time.sleep(LIFTING_TIME)
+GPIO.output(LIFT_PIN, GPIO.LOW)   # Turn off LED
 
 #Halt at top
 output = "Halting at the top for %i seconds" % STATIONARY_PAUSE
@@ -129,7 +125,20 @@ for _ in range(5): #random number to be updated
 
 
 #Lower the rig
-platform.lower(LOWERING_TIME)
+
+timeout = LOWERING_TIME  # Total timeout in seconds
+interval = 0.1  # Check interval in seconds
+elapsed_time = 0
+
+GPIO.output(LOWER_PIN, GPIO.HIGH)  # Turn on LED
+
+while elapsed_time < timeout:
+    if get_weight() < MINIMUM_WEIGHT:
+        break
+    time.sleep(interval)
+    elapsed_time += interval
+
+GPIO.output(LOWER_PIN, GPIO.LOW)   # Turn off LED
 
 output = "The Rig should be on the ground"
 log()
