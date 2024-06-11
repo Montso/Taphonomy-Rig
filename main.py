@@ -136,7 +136,7 @@ num_samples = 3
 while elapsed_time < timeout:
     if get_weight(num_samples) < MINIMUM_WEIGHT:
         break
-    elapsed_time += 0.1*num_samples
+    elapsed_time += 0.2*num_samples
     time.sleep(interval)
     elapsed_time += interval
 
