@@ -2,7 +2,7 @@ import RPi.GPIO as GPIO
 import time
 
 # Set up the GPIO pin
-LED_PIN = 22  # GPIO pin 22
+LED_PIN = 5  # GPIO pin 5
 BLINK_DELAY = 1  # 1 second delay
 
 def setup():
