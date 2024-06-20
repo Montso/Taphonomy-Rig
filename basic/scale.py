@@ -7,7 +7,7 @@ import argparse
 SCALE_OFFSET = 1
 CAL_FACTOR = 1
 
-def weigh(offset, factor)
+def weigh(offset, factor):
     #Setup
     SCALE_OFFSET = offset
     CAL_FACTOR = factor
