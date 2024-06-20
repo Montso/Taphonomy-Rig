@@ -18,7 +18,7 @@ def weigh(offset, factor):
     try: 
         hx.reset()
         while True:
-            raw_read = statistics.mean(hx.get_raw_data(readings))
+            raw_read = statistics.mean(hx.get_raw_data(5))
             weight = round((((raw_read-SCALE_OFFSET)/CAL_FACTOR)**2)**0.5, 3)
             print(weight)
             time.sleep(1)
