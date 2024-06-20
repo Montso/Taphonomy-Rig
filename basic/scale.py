@@ -18,7 +18,9 @@ def weigh(offset, factor):
     try: 
         hx.reset()
         while True:
-            print(get_weight())
+            raw_read = statistics.mean(hx.get_raw_data(readings))
+            weight = round((((raw_read-SCALE_OFFSET)/CAL_FACTOR)**2)**0.5, 3)
+            print(weight)
             time.sleep(1)
     except KeyboardInterrupt:
         GPIO.cleanup()
@@ -31,17 +33,6 @@ def main():
     parser.add_argument('cal_factor', type=float, help='The cal_factor for the scale')
     args = parser.parse_args()
     weigh(args.offset,args.cal_factor)
-
-
-def get_weight(readings=5):
-    """
-    Calculates weight by (reading - offset)/calc_factor
-    """
-    global hx
-    raw_read = statistics.mean(hx.get_raw_data(readings))
-    weight = round((((raw_read-SCALE_OFFSET)/CAL_FACTOR)**2)**0.5, 3)
-    
-    return weight
 
 if __name__ == "__main__":
     main()
