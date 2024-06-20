@@ -21,8 +21,8 @@ def weigh(offset, factor):
             print(get_weight())
             time.sleep(1)
     except KeyboardInterrupt:
-    GPIO.cleanup()
-    print("\nApplication Closed by user")
+        GPIO.cleanup()
+        print("\nApplication Closed by user")
 
 
 def main():
