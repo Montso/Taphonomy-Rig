@@ -2,7 +2,6 @@ from hx711 import HX711
 import logging
 import os
 import RPi.GPIO as GPIO  # import GPIO
-from scale import Scale  # import the class HX711
 import statistics
 import time
 import yaml
