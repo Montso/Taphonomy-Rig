@@ -16,7 +16,7 @@ def weigh(offset, factor):
     hx.power_up()
     print("Resetting scale...")
     try: 
-    hx.reset()
+        hx.reset()
         while True:
             print(get_weight())
             time.sleep(1)
