@@ -43,6 +43,17 @@ STATIONARY_PAUSE  = conf["Timing"]["Stationary_pause"]
 
 #Check to see if the log folder exists and make it if not
 
+# Specify the folder path
+folder_path = '/log'
+
+# Check if the folder exists
+if not os.path.exists(folder_path):
+    # Create the folder if it does not exist
+    os.makedirs(folder_path)
+    print(f"Folder '{folder_path}' created.")
+else:
+    print(f"Folder '{folder_path}' already exists.")
+
 #Logging stream
 logging.basicConfig(filename = "./log/file_{t}.log".format(t = time.strftime("%Y_%m_%d_%H_%M_%S", time.localtime())),level=logging.DEBUG, format="%(asctime)s:" + logging.BASIC_FORMAT)
 console = logging.StreamHandler()
