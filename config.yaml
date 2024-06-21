@@ -24,7 +24,7 @@ Timing:
   Before_lift: 5
   Lift_time: 2
   Stationary_pause: 5
-  Lower_time: 2.5
+  Lower_time: 2
   
 # Power Monitoring Configs
 Power:
