@@ -1,1 +1,2 @@
-0 0 * * * (cd ~/Taphonomy-Rig && sleep 300 && /usr/bin/python3 main.py)
+23 55 * * * sudo reboot
+@reboot (cd ~/Taphonomy-Rig && sleep 300 && sudo python3 main.py)
