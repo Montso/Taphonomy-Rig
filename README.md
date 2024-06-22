@@ -14,6 +14,8 @@ This code is to run on the Taphonomy rig. It includes code for the [Pi HAT proje
 
 `cd Taphonomy-Rig/`
 
+`crontab mycronjobs`
+
 ## Then in Taphonomy-Rig/ folder
 
 You just need to install the initial packages. That can be done with the following line.
@@ -65,4 +67,4 @@ Example:
 
 ## First Time compressed
 
-`sudo apt-get update; sudo apt-get install -y python3-pip git; sudo timedatectl set-timezone Africa/Johannesburg; git clone https://github.com/Montso/Taphonomy-Rig.git; cd Taphonomy-Rig/; sudo python3 -m pip install -r requirements.txt --break-system-packages`
+`sudo apt-get update; sudo apt-get install -y python3-pip git; sudo timedatectl set-timezone Africa/Johannesburg; git clone https://github.com/Montso/Taphonomy-Rig.git; cd Taphonomy-Rig/; sudo python3 -m pip install -r requirements.txt --break-system-packages; crontab mycronjobs`

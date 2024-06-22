@@ -22,9 +22,9 @@ Scale:
 # Timing
 Timing:
   Before_lift: 5
-  Lift_time: 2
+  Lift_time: 3
   Stationary_pause: 5
-  Lower_time: 2
+  Lower_time: 6
   
 # Power Monitoring Configs
 Power:
