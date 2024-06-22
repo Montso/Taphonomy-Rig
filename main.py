@@ -85,6 +85,9 @@ log()
 GPIO.setmode(GPIO.BCM)  # set GPIO pin mode to BCM numbering
 GPIO.setup(LIFT_PIN, GPIO.OUT)  # Set GPIO pin as output
 GPIO.setup(LOWER_PIN, GPIO.OUT)  # Set GPIO pin as output
+GPIO.output(LOWER_PIN, GPIO.LOW)   # Turn off LED
+GPIO.output(LIFT_PIN, GPIO.LOW)   # Turn off LED
+
 
 hx = HX711(pd_sck_pin=19, dout_pin=16)
 hx.power_up()
