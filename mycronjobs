@@ -1,0 +1,1 @@
+0 0 * * * (cd ~/Taphonomy-Rig && sleep 300 && /usr/bin/python3 main.py)
