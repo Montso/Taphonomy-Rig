@@ -14,6 +14,12 @@ This code is to run on the Taphonomy rig. It includes code for the [Pi HAT proje
 
 `cd Taphonomy-Rig/`
 
+## Then in Taphonomy-Rig/ folder
+
+You just need to install the initial packages. That can be done with the following line.
+
+`sudo python3 -m pip install -r requirements.txt --break-system-packages`
+
 `mkdir log`
 
 `crontab mycronjobs`
@@ -25,12 +31,6 @@ This code is to run on the Taphonomy rig. It includes code for the [Pi HAT proje
 `rm requirements.txt`
 
 `rm default_config.yaml`
-
-## Then in Taphonomy-Rig/ folder
-
-You just need to install the initial packages. That can be done with the following line.
-
-`sudo python3 -m pip install -r requirements.txt --break-system-packages`
 
 Now its ready for operation
 
