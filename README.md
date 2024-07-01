@@ -42,6 +42,8 @@ you have 2 options; Testing or Lifting:
 
 This should fail initially as it informs you that a configuration hasnt been performed.
 
+!!!NOT IMPLEMENTED YET!!!
+
 To do that you type:
 
 `python3 configuration.py`
@@ -49,6 +51,9 @@ To do that you type:
 It should go through the instructions for you.
 
 After that it creates an empty file called "configured" that is how main.py knows whether its been run or not. Deleting this file will require configuration to be run again.
+
+!!!NOT IMPLEMENTED YET!!!
+
 
 Changing the values in config.yaml will change the operations of the device on each main.py operation.
 
@@ -73,8 +78,8 @@ scp [username]@[IP]:~/[filename] [filename on your pc]
 
 Example:
 
-`scp justin@192.168.137.79:~/myfile.tar yemi.tar`
+`scp justin@192.168.137.79:~/myfile.tar kris.tar`
 
 ## First Time compressed
 
-`sudo apt-get update; sudo apt-get install -y python3-pip git; sudo timedatectl set-timezone Africa/Johannesburg; git clone https://github.com/Montso/Taphonomy-Rig.git; cd Taphonomy-Rig/; sudo python3 -m pip install -r requirements.txt --break-system-packages; crontab mycronjobs; mkdir log; rm Makefile; rm requirements.txt; rm default_config.yaml`
+`sudo apt-get update; sudo apt-get install -y python3-pip git; sudo timedatectl set-timezone Africa/Johannesburg; git clone https://github.com/Montso/Taphonomy-Rig.git; cd Taphonomy-Rig/; sudo python3 -m pip install -r requirements.txt --break-system-packages; crontab mycronjobs; mkdir log; rm mycronjobs; rm Makefile; rm requirements.txt; rm default_config.yaml`
