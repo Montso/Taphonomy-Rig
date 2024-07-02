@@ -7,6 +7,10 @@ import time
 import yaml
 import argparse
 
+DEFAULT_READOUTS = 5
+SCALE_OFFSET = 1
+CAL_FACTOR = 1
+
 # SETUP
 
 if not os.path.isfile("configured"):
@@ -165,8 +169,7 @@ def log():
     message_dump += f"{output}\n"
     logger.info(output)
 
-
-def get_weight(readings=SCALE_READOUTS):
+def get_weight(readings=DEFAULT_READOUTS):
     """
     Calculates weight by (reading - offset)/calc_factor
     """
