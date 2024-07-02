@@ -2,7 +2,6 @@
 MakeFile
 #only upload the default config file
 config.yaml
-update-version.sh
 
 #Folders to ignore
 log/
