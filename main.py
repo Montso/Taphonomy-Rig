@@ -11,6 +11,7 @@ DEFAULT_READOUTS = 5
 SCALE_OFFSET = 1
 CAL_FACTOR = 1
 message_dump = ""
+output = ""
 
 # SETUP
 
