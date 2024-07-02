@@ -86,6 +86,16 @@ Example:
 
 ## Fun fiddles
 
-`mv mv ~/Taphonomy-Rig/.git_hooks_post-merge ~/Taphonomy-Rig/.git/hooks/post-merge`
+This is to get the version number and hash appearing correctly in the config file. To do this, I have made a file which needs to be moved into the hidden git folder with the correct name. The line below will facilitate this.
+
+`mv ~/Taphonomy-Rig/.git_hooks_post-merge ~/Taphonomy-Rig/.git/hooks/post-merge`
+
+Following that, we need to make it executable with the following line.
 
 `chmod +x ~/Taphonomy-Rig/.git/hooks/post-merge`
+
+In that script it will run the .sh file update-version which we also need to make executable. That is given below.
+
+`chmod +x ~/Taphonomy-Rig/update-version.sh`
+
+Then finally, this gets the information that we want, and makes use of a python file [update_version.py] to insert it correctly into the config.yaml file.
