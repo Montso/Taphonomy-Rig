@@ -53,20 +53,6 @@ def main(config):
     STATIONARY_PAUSE  = config["Timing"]["Stationary_pause"]
 
     #Config variables//
-    
-    #Check to see if the log folder exists and make it if not
-
-    # Specify the folder path
-    #folder_path = './log'
-
-    #Check if the folder exists
-    if not os.path.exists(folder_path):
-        # Create the folder if it does not exist
-        os.makedirs(folder_path)
-        logger.info("Folder '%s' created."%folder_path)
-    else:
-        logger.info("Folder '%s' already exists."%folder_path)
-
     # Create a logger
     logger = logging.getLogger(__name__)
     logger.setLevel(logging.DEBUG)
@@ -92,6 +78,18 @@ def main(config):
     logger.propagate = False
 
     timestamp = time.time()
+
+    # Specify the folder path
+    #folder_path = './log'
+
+    #Check if the data folder exists
+    if not os.path.exists(folder_path):
+        # Create the folder if it does not exist
+        os.makedirs(folder_path)
+        logger.info("Folder '%s' created."%folder_path)
+    else:
+        logger.info("Folder '%s' already exists."%folder_path)
+
 
     #Lift Startup log
     output = "Regular Nightly Lift Program; Device %i version %i"%(DEVICE_ID, VERSION)
