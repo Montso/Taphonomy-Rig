@@ -90,14 +90,14 @@ def main(config):
     timestamp = time.time()
 
     #Lift Startup log
-    output = "Regular Nightly Lift Program\n"
+    output = "Regular Nightly Lift Program"
     logger.info(output)
-    output = "Using hardcoded calibration factor of %i and offset %i\n" %(CAL_FACTOR, SCALE_OFFSET)
+    output = "Using hardcoded calibration factor of %i and offset %i" %(CAL_FACTOR, SCALE_OFFSET)
     logger.info(output)
-    output = "The lifting flag is set to %r\n" %LIFT_PIG_FLAG
+    output = "The lifting flag is set to %r" %LIFT_PIG_FLAG
     logger.info(output)
 
-    output = "Piglift startup\n"
+    output = "Piglift startup"
     logger.info(output)
 
     #Setup
@@ -110,24 +110,24 @@ def main(config):
 
     hx = HX711(pd_sck_pin=19, dout_pin=16)
     hx.power_up()
-    output = "Resetting scale...\n"
+    output = "Resetting scale..."
     logger.info(output)
     hx.reset()
 
     #SETUP//
 
-    output = "Printing %i test readings\n"%SCALE_READOUTS
+    output = "Printing %i test readings"%SCALE_READOUTS
     logger.info(output)
 
     for _ in range(5): #random number to be updated
         val = get_weight()
-        output = "%s\n"%str(val)
+        output = "%s"%str(val)
         logger.info(output)
         time.sleep(0.05)
 
     #Lift the rig
     #LIFT Procedure
-    output = "performing a lift in %i seconds\n" % DELAY_BEFORE_LIFT
+    output = "performing a lift in %i seconds" % DELAY_BEFORE_LIFT
     logger.info(output)
     time.sleep(DELAY_BEFORE_LIFT)
     GPIO.output(LIFT_PIN, GPIO.HIGH)  # Turn on LED
@@ -135,13 +135,13 @@ def main(config):
     GPIO.output(LIFT_PIN, GPIO.LOW)   # Turn off LED
 
     #Halt at top
-    output = "Halting at the top for %i seconds\n" % STATIONARY_PAUSE
+    output = "Halting at the top for %i seconds" % STATIONARY_PAUSE
     logger.info(output)
     time.sleep(STATIONARY_PAUSE)
 
     for _ in range(5): #random number to be updated
         val = get_weight()
-        output = f"{val:.3f}\n"
+        output = f"{val:.3f}"
         logger.info(output)
         time.sleep(0.05)
 
@@ -164,16 +164,16 @@ def main(config):
 
     GPIO.output(LOWER_PIN, GPIO.LOW)   # Turn off LED
 
-    output = "The Rig should be on the ground\n"
+    output = "The Rig should be on the ground"
     logger.info(output)
 
     for _ in range(5): #random number to be updated
         val = get_weight()
-        output = f"{val:.3f}\n"
+        output = f"{val:.3f}"
         logger.info(output)
         time.sleep(0.05)
 
-    output = "File complete - Exitting\n"
+    output = "File complete - Exitting"
     logger.info(output)
 
     GPIO.cleanup()
