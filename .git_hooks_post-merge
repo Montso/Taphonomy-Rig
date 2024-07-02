@@ -1,0 +1,9 @@
+#!/bin/sh
+
+# Get the latest commit hash
+VERSION_NUMBER=$(git rev-list --count HEAD)
+COMMIT_HASH=$(git rev-parse HEAD)
+
+# Append the commit hash to version.txt
+echo "Version: $VERSION_NUMBER" > version.txt
+echo "Hash: $COMMIT_HASH" >> version.txt
