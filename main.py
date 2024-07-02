@@ -63,9 +63,9 @@ def main(config):
     if not os.path.exists(folder_path):
         # Create the folder if it does not exist
         os.makedirs(folder_path)
-        logger.info(f"Folder '{folder_path}' created.")
+        logger.info("Folder '%s' created."%folder_path)
     else:
-        logger.info(f"Folder '{folder_path}' already exists.")
+        logger.info("Folder '%s' already exists."%folder_path)
 
     # Create a logger
     logger = logging.getLogger(__name__)
