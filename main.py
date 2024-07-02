@@ -98,34 +98,34 @@ def main(config):
 
     #SETUP//
 
-output = "Printing %i test readings"%SCALE_READOUTS
-log()
-
-for _ in range(5): #random number to be updated
-    val = get_weight()
-    output = str(val)
+    output = "Printing %i test readings"%SCALE_READOUTS
     log()
-    time.sleep(0.05)
 
-#Lift the rig
-#LIFT Procedure
-output = "performing a lift in %i seconds" % DELAY_BEFORE_LIFT
-log()
-time.sleep(DELAY_BEFORE_LIFT)
-GPIO.output(LIFT_PIN, GPIO.HIGH)  # Turn on LED
-time.sleep(LIFTING_TIME)
-GPIO.output(LIFT_PIN, GPIO.LOW)   # Turn off LED
+    for _ in range(5): #random number to be updated
+        val = get_weight()
+        output = str(val)
+        log()
+        time.sleep(0.05)
 
-#Halt at top
-output = "Halting at the top for %i seconds" % STATIONARY_PAUSE
-log()
-time.sleep(STATIONARY_PAUSE)
-
-for _ in range(5): #random number to be updated
-    val = get_weight()
-    output = f"{val:.3f}"
+    #Lift the rig
+    #LIFT Procedure
+    output = "performing a lift in %i seconds" % DELAY_BEFORE_LIFT
     log()
-    time.sleep(0.05)
+    time.sleep(DELAY_BEFORE_LIFT)
+    GPIO.output(LIFT_PIN, GPIO.HIGH)  # Turn on LED
+    time.sleep(LIFTING_TIME)
+    GPIO.output(LIFT_PIN, GPIO.LOW)   # Turn off LED
+
+    #Halt at top
+    output = "Halting at the top for %i seconds" % STATIONARY_PAUSE
+    log()
+    time.sleep(STATIONARY_PAUSE)
+
+    for _ in range(5): #random number to be updated
+        val = get_weight()
+        output = f"{val:.3f}"
+        log()
+        time.sleep(0.05)
 
 
     #Lower the rig
