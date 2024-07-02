@@ -10,6 +10,7 @@ import argparse
 DEFAULT_READOUTS = 5
 SCALE_OFFSET = 1
 CAL_FACTOR = 1
+hx = HX711(pd_sck_pin=19, dout_pin=16)
 
 # SETUP
 
