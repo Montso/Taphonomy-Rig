@@ -1,4 +1,4 @@
 #!/bin/sh
 
 # Execute the shared script to update the YAML file
-~/Taphony-rig/update-version.sh
+~/Taphonomy-Rig/update-version.sh
