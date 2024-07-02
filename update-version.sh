@@ -8,4 +8,4 @@ COMMIT_HASH=$(git rev-parse HEAD)
 YAML_FILE="~/Taphony-rig/config.yaml"
 
 # Update the YAML file with the commit hash
-python3 ~/Taphony-rig/update_version.py $YAML_FILE $COMMIT_HASH $VERSION_NUMBER
+python3 ~/Taphonomy-rig/update_version.py $YAML_FILE $COMMIT_HASH $VERSION_NUMBER
