@@ -30,6 +30,7 @@ def main(config):
         
     #Config variables
     VERSION = config["Device"]["Version"]
+    HASH = config["Device"]["Hash"]
     DEVICE_ID = config["Device"]["ID"]
     
     folder_path = config["FS"]["Data_dir"]
@@ -92,7 +93,7 @@ def main(config):
 
 
     #Lift Startup log
-    output = "Regular Nightly Lift Program; Device %i version %i"%(DEVICE_ID, VERSION)
+    output = "Regular Nightly Lift Program; Device %i version %i, Hash:%s"%(DEVICE_ID, VERSION,HASH)
     logger.info(output)
     output = "Using hardcoded calibration factor of %i and offset %i" %(CAL_FACTOR, SCALE_OFFSET)
     logger.info(output)
