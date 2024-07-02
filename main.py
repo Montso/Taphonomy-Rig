@@ -10,6 +10,7 @@ import argparse
 DEFAULT_READOUTS = 5
 SCALE_OFFSET = 1
 CAL_FACTOR = 1
+message_dump = ""
 
 # SETUP
 
@@ -73,7 +74,6 @@ def main(config):
     logger = logging.getLogger(__name__)
 
     timestamp = time.time()
-    message_dump = ""
 
     #Lift Startup log
     output = "Regular Nightly Lift Program"
