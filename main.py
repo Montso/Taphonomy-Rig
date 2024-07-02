@@ -65,13 +65,27 @@ def main(config):
     else:
         print(f"Folder '{folder_path}' already exists.")
 
-    #Logging stream
-    logging.basicConfig(filename = "./log/file_{t}.log".format(t = time.strftime("%Y_%m_%d_%H_%M_%S", time.localtime())),level=logging.DEBUG, format="%(asctime)s:" + logging.BASIC_FORMAT)
-    console = logging.StreamHandler()
-    console.setLevel(logging.DEBUG)
-    console.setFormatter(logging.Formatter("%(asctime)s:" + logging.BASIC_FORMAT))
-    logging.getLogger().addHandler(console)
+    # Create a logger
     logger = logging.getLogger(__name__)
+    logger.setLevel(logging.DEBUG)
+
+    # Create file handler which logs even debug messages
+    log_filename = f"./log/file_{time.strftime('%Y_%m_%d_%H_%M_%S', time.localtime())}.log"
+    file_handler = logging.FileHandler(log_filename)
+    file_handler.setLevel(logging.DEBUG)
+
+    # Create console handler with a higher log level
+    console_handler = logging.StreamHandler()
+    console_handler.setLevel(logging.DEBUG)
+
+    # Create formatter and add it to the handlers
+    formatter = logging.Formatter("%(asctime)s - %(name)s - %(levelname)s - %(message)s")
+    file_handler.setFormatter(formatter)
+    console_handler.setFormatter(formatter)
+
+    # Add the handlers to the logger
+    logger.addHandler(file_handler)
+    logger.addHandler(console_handler)
 
     timestamp = time.time()
 
