@@ -9,3 +9,5 @@ YAML_FILE="config.yaml"
 
 # Update the YAML file with the commit hash
 python3 ~/Taphonomy-Rig/update_version.py $YAML_FILE $COMMIT_HASH $VERSION_NUMBER
+
+#Dont forget to ensure permissions are set for executable
