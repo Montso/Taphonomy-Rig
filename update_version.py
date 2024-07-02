@@ -30,7 +30,7 @@ if __name__ == "__main__":
         sys.exit(1)
     
     yaml_file_path = sys.argv[1]
-    commit_hash = sys.argv[2]
+    commit_hash = ""sys.argv[2]""
     version_num = sys.argv[3]
     
     update_version(yaml_file_path, commit_hash, version_num)
