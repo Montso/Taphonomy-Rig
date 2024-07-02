@@ -31,6 +31,8 @@ def main(config):
     #Config variables
     VERSION = config["Device"]["Version"]
     DEVICE_ID = config["Device"]["ID"]
+    
+    folder_path = config["FS"]["Data_dir"]
 
     #Pig
     MINIMUM_WEIGHT = config["Pig"]["Min_Weight"]
@@ -55,15 +57,15 @@ def main(config):
     #Check to see if the log folder exists and make it if not
 
     # Specify the folder path
-    folder_path = './log'
+    #folder_path = './log'
 
     #Check if the folder exists
     if not os.path.exists(folder_path):
         # Create the folder if it does not exist
         os.makedirs(folder_path)
-        print(f"Folder '{folder_path}' created.")
+            logger.info(f"Folder '{folder_path}' created.")
     else:
-        print(f"Folder '{folder_path}' already exists.")
+        logger.info(f"Folder '{folder_path}' already exists.")
 
     # Create a logger
     logger = logging.getLogger(__name__)

@@ -3,6 +3,9 @@ Device:
   Version: 1.0
   ID: 1
 
+FS:
+   Data_dir: './log'
+
 Pig:
   Min_Weight: 10
   Lift_pig: False
