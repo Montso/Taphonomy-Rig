@@ -99,3 +99,5 @@ In that script it will run the .sh file update-version which we also need to mak
 `chmod +x ~/Taphonomy-Rig/update-version.sh`
 
 Then finally, this gets the information that we want, and makes use of a python file [update_version.py] to insert it correctly into the config.yaml file.
+
+This will resolve it for tonight
