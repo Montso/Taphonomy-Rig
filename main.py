@@ -87,6 +87,8 @@ def main(config):
     logger.addHandler(file_handler)
     logger.addHandler(console_handler)
 
+    logger.propagate = False
+
     timestamp = time.time()
 
     #Lift Startup log
