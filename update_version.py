@@ -25,7 +25,7 @@ def update_version(file_path, commit_hash, version_num):
     save_yaml(file_path, data)
 
 if __name__ == "__main__":
-    if len(sys.argv) != 3:
+    if len(sys.argv) != 4:
         print("Usage: update_version.py <yaml_file_path> <commit_hash> <version_num>")
         sys.exit(1)
     
