@@ -92,7 +92,7 @@ def main(config):
     timestamp = time.time()
 
     #Lift Startup log
-    output = "Regular Nightly Lift Program"
+    output = "Regular Nightly Lift Program; Device %i version %i"%(DEVICE_ID, VERSION)
     logger.info(output)
     output = "Using hardcoded calibration factor of %i and offset %i" %(CAL_FACTOR, SCALE_OFFSET)
     logger.info(output)
@@ -132,9 +132,10 @@ def main(config):
     output = "performing a lift in %i seconds" % DELAY_BEFORE_LIFT
     logger.info(output)
     time.sleep(DELAY_BEFORE_LIFT)
-    GPIO.output(LIFT_PIN, GPIO.HIGH)  # Turn on LED
-    time.sleep(LIFTING_TIME)
-    GPIO.output(LIFT_PIN, GPIO.LOW)   # Turn off LED
+    if(LIFT_PIG_FLAG):
+        GPIO.output(LIFT_PIN, GPIO.HIGH)  # Turn on LED
+        time.sleep(LIFTING_TIME)
+        GPIO.output(LIFT_PIN, GPIO.LOW)   # Turn off LED
 
     #Halt at top
     output = "Halting at the top for %i seconds" % STATIONARY_PAUSE
@@ -153,18 +154,19 @@ def main(config):
     timeout = LOWERING_TIME  # Total timeout in seconds
     interval = 0.1  # Check interval in seconds
     elapsed_time = 0
+    if(LIFT_PIG_FLAG):
 
-    GPIO.output(LOWER_PIN, GPIO.HIGH)  # Turn on LED
+        GPIO.output(LOWER_PIN, GPIO.HIGH)  # Turn on LED
 
-    num_samples = 3
-    while elapsed_time < timeout:
-        if get_weight(num_samples) < MINIMUM_WEIGHT:
-            break
-        elapsed_time += 0.1*num_samples
-        time.sleep(interval)
-        elapsed_time += interval
+        num_samples = 3
+        while elapsed_time < timeout:
+            if get_weight(num_samples) < MINIMUM_WEIGHT:
+                break
+            elapsed_time += 0.1*num_samples
+            time.sleep(interval)
+            elapsed_time += interval
 
-    GPIO.output(LOWER_PIN, GPIO.LOW)   # Turn off LED
+        GPIO.output(LOWER_PIN, GPIO.LOW)   # Turn off LED
 
     output = "The Rig should be on the ground"
     logger.info(output)
