@@ -68,7 +68,7 @@ def main(config):
     #Logging stream
     logging.basicConfig(filename = "./log/file_{t}.log".format(t = time.strftime("%Y_%m_%d_%H_%M_%S", time.localtime())),level=logging.DEBUG, format="%(asctime)s:" + logging.BASIC_FORMAT)
     console = logging.StreamHandler()
-    console.setLevel(logging.INFO)
+    console.setLevel(logging.DEBUG)
     console.setFormatter(logging.Formatter("%(asctime)s:" + logging.BASIC_FORMAT))
     logging.getLogger().addHandler(console)
     logger = logging.getLogger(__name__)
@@ -168,7 +168,6 @@ def get_weight(readings=DEFAULT_READOUTS):
     """
     Calculates weight by (reading - offset)/calc_factor
     """
-    global hx
     raw_read = statistics.mean(hx.get_raw_data(readings))
     weight = round((((raw_read-SCALE_OFFSET)/CAL_FACTOR)**2)**0.5, 3)
     
