@@ -2,6 +2,7 @@
 Device:
   Version: 1.0
   ID: 1
+  Hash: 0
 
 FS:
    Data_dir: './log'
