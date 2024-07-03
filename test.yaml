@@ -1,0 +1,37 @@
+---
+Device:
+  Version: 1.0
+  ID: 1
+
+FS:
+   Data_dir: './log'
+
+Pig:
+  Min_Weight: 10
+  Lift_pig: False
+
+# Relays Configs
+Relay:
+  Lift_pin: 5
+  Lower_pin: 22
+
+# Scale Configs
+Scale:
+  Ratio: 1
+  Offset: 1
+  ODR_SET: 10
+  Default_readouts: 2 #This is also significantly related to timing
+  Default_averaging: 2 #This is also significantly related to timing
+
+# Timing
+Timing:
+  Before_lift: 0.5
+  Lift_time: 3
+  Stationary_pause: 0.5
+  Lower_time: 4
+  
+# Power Monitoring Configs
+Power:
+  FLOAT_DP: 3
+  IN0: -1 # 1 if anything is connected
+...
