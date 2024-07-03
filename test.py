@@ -14,7 +14,13 @@ def main():
 
     main_args = sys.argv[2:]
 
-    for _ in range(num_times):
+    for x in range(num_times):
+        print("----------Attempt: %i----------"%x)
+        print("----------Attempt: %i----------"%x)
+        print("----------Attempt: %i----------"%x)
+        print("----------Of     : %i----------"%num_times)
+        print("----------Of     : %i----------"%num_times)
+        print("----------Of     : %i----------"%num_times)
         subprocess.run(['python', 'main.py'] + main_args)
 
 if __name__ == "__main__":
