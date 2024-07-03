@@ -95,7 +95,7 @@ def main(config):
 
 
     #Lift Startup log
-    output = "Regular Nightly Lift Program; Device %i version %i, Hash:%s"%(DEVICE_ID, VERSION,HASH)
+    output = "Regular Nightly Lift Program; Device %i version %s, Hash:%s"%(DEVICE_ID, VERSION,HASH)
     logger.info(output)
     output = "Using hardcoded calibration factor of %i and offset %i" %(CAL_FACTOR, SCALE_OFFSET)
     logger.info(output)
@@ -123,7 +123,11 @@ def main(config):
 
     output = "Printing %i test readings"%SCALE_READOUTS
     logger.info(output)
-    display_weights()
+    for _ in range(SCALE_READOUTS): #random number to be updated
+        val = get_weight(SCALE_AVERAGING)
+        output = f"{val:.3f}"
+        logger.info(output)
+        time.sleep(0.05)
 
     #Lift the rig
     #LIFT Procedure
@@ -140,7 +144,11 @@ def main(config):
     logger.info(output)
     time.sleep(STATIONARY_PAUSE)
 
-    display_weights()
+    for _ in range(SCALE_READOUTS): #random number to be updated
+        val = get_weight(SCALE_AVERAGING)
+        output = f"{val:.3f}"
+        logger.info(output)
+        time.sleep(0.05)
     #Lower the rig
 
     timeout = LOWERING_TIME  # Total timeout in seconds
@@ -162,20 +170,17 @@ def main(config):
 
     output = "The Rig should be on the ground"
     logger.info(output)
-    display_weights()
+    for _ in range(SCALE_READOUTS): #random number to be updated
+        val = get_weight(SCALE_AVERAGING)
+        output = f"{val:.3f}"
+        logger.info(output)
+        time.sleep(0.05)
     
 
     output = "File complete - Exitting"
     logger.info(output)
 
     GPIO.cleanup()
-
-def display_weights():
-    for _ in range(SCALE_READOUTS): #random number to be updated
-        val = get_weight(SCALE_AVERAGING)
-        output = f"{val:.3f}"
-        logger.info(output)
-        time.sleep(0.05)
 
 def get_weight(readings=SCALE_AVERAGING):
     """
