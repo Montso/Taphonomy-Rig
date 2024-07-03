@@ -7,7 +7,8 @@ import time
 import yaml
 import argparse
 
-DEFAULT_READOUTS = 5
+SCALE_READOUTS = 5
+SCALE_AVERAGING = 5
 SCALE_OFFSET = 1
 CAL_FACTOR = 1
 hx = HX711(pd_sck_pin=19, dout_pin=16)
@@ -42,6 +43,7 @@ def main(config):
     SCALE_OFFSET = config["Scale"]["Offset"]
     CAL_FACTOR = config["Scale"]["Ratio"]
     SCALE_READOUTS = config["Scale"]["Default_readouts"]
+    SCALE_AVERAGING = config["Scale"]["Default_averaging"]
 
     #Relay
     LOWER_PIN = config["Relay"]["Lift_pin"]
@@ -121,12 +123,7 @@ def main(config):
 
     output = "Printing %i test readings"%SCALE_READOUTS
     logger.info(output)
-
-    for _ in range(5): #random number to be updated
-        val = get_weight()
-        output = "%s"%str(val)
-        logger.info(output)
-        time.sleep(0.05)
+    display_weights()
 
     #Lift the rig
     #LIFT Procedure
@@ -143,13 +140,7 @@ def main(config):
     logger.info(output)
     time.sleep(STATIONARY_PAUSE)
 
-    for _ in range(5): #random number to be updated
-        val = get_weight()
-        output = f"{val:.3f}"
-        logger.info(output)
-        time.sleep(0.05)
-
-
+    display_weights()
     #Lower the rig
 
     timeout = LOWERING_TIME  # Total timeout in seconds
@@ -171,19 +162,22 @@ def main(config):
 
     output = "The Rig should be on the ground"
     logger.info(output)
-
-    for _ in range(5): #random number to be updated
-        val = get_weight()
-        output = f"{val:.3f}"
-        logger.info(output)
-        time.sleep(0.05)
+    display_weights()
+    
 
     output = "File complete - Exitting"
     logger.info(output)
 
     GPIO.cleanup()
 
-def get_weight(readings=DEFAULT_READOUTS):
+def display_weights():
+    for _ in range(SCALE_READOUTS): #random number to be updated
+        val = get_weight(SCALE_AVERAGING)
+        output = f"{val:.3f}"
+        logger.info(output)
+        time.sleep(0.05)
+
+def get_weight(readings=SCALE_AVERAGING):
     """
     Calculates weight by (reading - offset)/calc_factor
     """
