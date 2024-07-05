@@ -97,11 +97,15 @@ As a suggestion, I would make it measure less and not pause in key places, but s
 So for example
 
 Before_Lift: 0.5
+
 Stationary_pause: 0.5
+
 While keeping the lift and lower times the same.
 
 Then for Measurements
+
 Default_readouts: 2
+
 Default_averaging: 2
 
 Once saved, running the line will perform 10 tests using the test.yaml file.
@@ -156,7 +160,7 @@ Example:
 
 ## First Time compressed
 
-`sudo apt-get update; sudo apt-get install -y python3-pip git; sudo timedatectl set-timezone Africa/Johannesburg; git clone https://github.com/Montso/Taphonomy-Rig.git; cd Taphonomy-Rig/; sudo python3 -m pip install -r requirements.txt --break-system-packages; crontab mycronjobs; mkdir log; rm mycronjobs; rm Makefile; rm requirements.txt; rm default_config.yaml`
+`sudo apt-get update; sudo apt-get install -y python3-pip git; sudo timedatectl set-timezone Africa/Johannesburg; git clone https://github.com/Montso/Taphonomy-Rig.git; cd Taphonomy-Rig/; sudo python3 -m pip install -r requirements.txt --break-system-packages; mv ~/Taphonomy-Rig/.git_hooks_post-merge ~/Taphonomy-Rig/.git/hooks/post-merge; chmod +x ~/Taphonomy-Rig/.git/hooks/post-merge; crontab mycronjobs; mkdir log; rm mycronjobs; rm Makefile; rm requirements.txt; rm default_config.yaml; rm power.py; rm relay.py; rm scale.py; rm .git_hooks_post-merge'
 
 ## Fun fiddles
 
@@ -175,3 +179,11 @@ In that script it will run the .sh file update-version which we also need to mak
 Then finally, this gets the information that we want, and makes use of a python file [update_version.py] to insert it correctly into the config.yaml file.
 
 This will resolve it for tonight.....
+
+
+`rm scale.py`
+
+`rm .git_hooks_post-merge'
+
+`rm power.py`
+`rm relay.py`
