@@ -183,7 +183,7 @@ This will resolve it for tonight.....
 
 `rm scale.py`
 
-`rm .git_hooks_post-merge'
+`rm .git_hooks_post-merge`
 
 `rm power.py`
 `rm relay.py`
