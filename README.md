@@ -160,7 +160,7 @@ Example:
 
 ## First Time compressed
 
-`sudo apt-get update; sudo apt-get install -y python3-pip git; sudo timedatectl set-timezone Africa/Johannesburg; git clone https://github.com/Montso/Taphonomy-Rig.git; cd Taphonomy-Rig/; sudo python3 -m pip install -r requirements.txt --break-system-packages; mv ~/Taphonomy-Rig/.git_hooks_post-merge ~/Taphonomy-Rig/.git/hooks/post-merge; chmod +x ~/Taphonomy-Rig/.git/hooks/post-merge; crontab mycronjobs; mkdir log; rm mycronjobs; rm Makefile; rm requirements.txt; rm default_config.yaml; rm power.py; rm relay.py; rm scale.py; rm .git_hooks_post-merge'
+`sudo apt-get update; sudo apt-get install -y python3-pip git; sudo timedatectl set-timezone Africa/Johannesburg; git clone https://github.com/Montso/Taphonomy-Rig.git; cd Taphonomy-Rig/; sudo python3 -m pip install -r requirements.txt --break-system-packages; mv ~/Taphonomy-Rig/.git_hooks_post-merge ~/Taphonomy-Rig/.git/hooks/post-merge; chmod +x ~/Taphonomy-Rig/.git/hooks/post-merge; crontab mycronjobs; mkdir log; rm mycronjobs; rm Makefile; rm requirements.txt; rm default_config.yaml; rm power.py; rm relay.py; rm scale.py; rm .git_hooks_post-merge`
 
 ## Fun fiddles
 
